@@ -1,7 +1,7 @@
 {
   "name": "student-comments",
   "version": "0.1.0",
-  "homepage": "https://vradenburg.github.io/student-comments",
+  "homepage": "https://student-comments.davidnlaura.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
