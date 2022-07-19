@@ -32,6 +32,7 @@ const CommentsList = () => {
           </div>
         ))}
       </div>
+      <a href={`#/comment/add`}>Add Comment</a>
     </div>
   );
 };

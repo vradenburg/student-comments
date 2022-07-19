@@ -32,6 +32,7 @@ const ClassesList = () => {
           </div>
         ))}
       </div>
+      <a href={`#/class/add`}>Add Class</a>
     </div>
   );
 };
