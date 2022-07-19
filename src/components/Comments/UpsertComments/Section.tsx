@@ -40,6 +40,7 @@ const Section = ({
       <textarea
         rows={5}
         value={section.comments.level1}
+        placeholder="Level 1"
         onChange={(e) =>
           onChange({
             comments: Object.assign({}, section.comments, {
@@ -51,6 +52,7 @@ const Section = ({
       <textarea
         rows={5}
         value={section.comments.level2}
+        placeholder="Level 2"
         onChange={(e) =>
           onChange({
             comments: Object.assign({}, section.comments, {
@@ -62,6 +64,7 @@ const Section = ({
       <textarea
         rows={5}
         value={section.comments.level3}
+        placeholder="Level 3"
         onChange={(e) =>
           onChange({
             comments: Object.assign({}, section.comments, {
@@ -73,6 +76,7 @@ const Section = ({
       <textarea
         rows={5}
         value={section.comments.level4}
+        placeholder="Level 4"
         onChange={(e) =>
           onChange({
             comments: Object.assign({}, section.comments, {
