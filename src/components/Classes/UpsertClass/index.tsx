@@ -50,13 +50,13 @@ const UpsertClass = () => {
             Students{" "}
             <span className="hint">
               One row per student. (First, Last, Subject Pronoun, Object
-              Pronoun, Possessive Pronoun, Level)
+              Pronoun, Possessive Pronoun)
             </span>
           </label>
           <textarea
             name="students"
             rows={15}
-            placeholder="ex: Jane, Smith, She, Her, Hers, 3"
+            placeholder="ex: Jane, Smith, She, Her, Hers"
             onChange={(e) => setStudents(e.target.value)}
             value={students}
           ></textarea>

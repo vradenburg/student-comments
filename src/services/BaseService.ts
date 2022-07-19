@@ -48,7 +48,7 @@ export class BaseService<TData extends IDescription> {
   };
 
   public getById = (id: number | undefined): TData | undefined => {
-    if (!id) return;
+    if (id === undefined) return;
 
     return this.state.data[id];
   };
