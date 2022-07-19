@@ -1,0 +1,13 @@
+{
+  "short_name": "Student Comments",
+  "name": "Student Comments",
+  "icons": [{
+    "src": "logo.png",
+    "type": "image/png",
+    "sizes": "860x893"
+  }],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
