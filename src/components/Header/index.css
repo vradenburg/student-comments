@@ -1,0 +1,38 @@
+header {
+  background-color: #01ba9e;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  padding: 0 20px;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header h1 {
+  flex-grow: 0;
+  margin: 10px 0;
+  font-size: x-large;
+}
+
+header h1 img {
+  margin-right: 10px;
+}
+
+header nav {
+  flex-grow: 1;
+  font-size: large;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+header ul li {
+  margin-left: 20px;
+}

@@ -1,0 +1,21 @@
+.section {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.section textarea {
+  font-size: medium;
+  margin-left: 5px;
+}
+
+.section .actions {
+  padding-left: 20px;
+}
+
+.section .actions button {
+  background: transparent;
+  border: none;
+  font-size: xx-large;
+  padding: 0;
+}

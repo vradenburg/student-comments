@@ -1,0 +1,48 @@
+.students {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.students .header {
+  display: flex;
+  flex-direction: row;
+  font-style: bold;
+  color: #7f7f7f;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.header .student-title {
+  flex: 1;
+}
+
+.header .level-title {
+  flex: 0;
+}
+
+.student {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid thin #7f7f7f;
+  padding: 10px;
+}
+
+.student .student-info {
+  flex: 1;
+  padding: 10px 0;
+  font-size: larger;
+}
+
+span.pronouns {
+  font-size: smaller;
+  text-transform: uppercase;
+  color: #7f7f7f;
+  margin-left: 20px;
+}
+
+.student input {
+  flex: 0;
+  padding: 2px;
+  width: 50px;
+  text-align: end;
+}
