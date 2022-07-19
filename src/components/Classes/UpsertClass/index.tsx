@@ -9,6 +9,11 @@ const UpsertClass = () => {
 
   const [description, setDescription] = useState("");
   const [students, setStudents] = useState("");
+  const [canSave, setCanSave] = useState(false);
+
+  useEffect(() => {
+    setCanSave(true);
+  }, [description, students]);
 
   useEffect(() => {
     if (!isCreateMode) {
@@ -16,16 +21,20 @@ const UpsertClass = () => {
       if (result) {
         setDescription(result.description);
         setStudents(result.students);
+        setCanSave(false);
       }
     }
-  }, [id, isCreateMode, setDescription, setStudents]);
+  }, [id, isCreateMode]);
 
-  function saveButtonClicked() {
+  const saveButtonClicked = () => {
     const classId = classService.save(id, { description, students });
     if (isCreateMode) {
       window.location.href = `#/class/${classId}/edit`;
+    } else {
+      setCanSave(false);
+      console.log("CAN_SAVE: false;");
     }
-  }
+  };
 
   return (
     <div>
@@ -62,7 +71,9 @@ const UpsertClass = () => {
           ></textarea>
         </div>
       </div>
-      <button onClick={saveButtonClicked}>Save</button>
+      <button disabled={!canSave} onClick={saveButtonClicked}>
+        Save
+      </button>
     </div>
   );
 };

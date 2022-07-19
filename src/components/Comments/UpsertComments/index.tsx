@@ -5,6 +5,7 @@ import commentService from "../../../services/CommentService";
 import { ISection } from "../../../services/CommentService/interfaces";
 import Section from "./Section";
 import { MdOutlineAdd } from "react-icons/md";
+import { cleanup } from "@testing-library/react";
 
 const UpsertComments = () => {
   const { id: idString } = useParams();
@@ -12,32 +13,59 @@ const UpsertComments = () => {
 
   const id: number | undefined = isCreateMode ? undefined : parseInt(idString);
 
-  const [sectionName, setSectionName] = useState("");
   const [description, setDescription] = useState("");
   const [sections, setSections] = useState<ISection[]>([]);
+  const [sectionName, setSectionName] = useState("");
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [canSave, setCanSave] = useState(false);
+
+  // useEffect(() => {
+  //   setCanSave(true);
+  // console.log("CAN_SAVE", true);
+  // }, [description, sections]);
 
   useEffect(() => {
-    if (!isCreateMode) {
+    if (!isCreateMode && !isInitialized) {
+      console.log("Initialize");
+      setIsInitialized(true);
       const result = commentService.getById(id);
       if (result) {
         setDescription(result.description);
         setSections(result.sections);
+
+        return function cleanup() {
+          setCanSave(false);
+          console.log("CAN_SAVE", false);
+        };
       }
     }
-  }, [id, isCreateMode, setDescription, setSections]);
+  }, [id, isCreateMode, isInitialized]);
 
-  function onSectionChanged(index: number, section: ISection) {
+  const onDescriptionChanged = (description: string) => {
+    setDescription(description);
+    setCanSave(true);
+    console.log("CAN_SAVE", true);
+  };
+
+  const onSectionChanged = (index: number, section: ISection) => {
+    console.log("OnSectionChanged");
     const updatedSections = Array.from(sections);
     updatedSections[index] = section;
     setSections(updatedSections);
-  }
-  function onSectionDeleted(index: number) {
+    setCanSave(true);
+    console.log("CAN_SAVE", true);
+  };
+  const onSectionDeleted = (index: number) => {
+    console.log("OnSectionDelete");
     const updatedSections = Array.from(sections);
     updatedSections.splice(index, 1);
     setSections(updatedSections);
-  }
+    setCanSave(true);
+    console.log("CAN_SAVE", true);
+  };
 
-  function onSectionMoved(index: number, isDown: boolean) {
+  const onSectionMoved = (index: number, isDown: boolean) => {
+    console.log("OnSectionMoved");
     let newIndex = isDown ? index + 1 : index - 1;
     if (newIndex < 0) newIndex = 0;
     const updatedSections = Array.from(sections);
@@ -45,24 +73,33 @@ const UpsertComments = () => {
     const [item] = updatedSections.splice(index, 1);
     updatedSections.splice(newIndex, 0, item);
     setSections(updatedSections);
-  }
+    setCanSave(true);
+    console.log("CAN_SAVE", true);
+  };
 
-  function addSection() {
+  const addSection = () => {
+    console.log("AddSection");
     const updatedSections = Array.from(sections);
     updatedSections.push({
       name: sectionName,
       comments: { level1: "", level2: "", level3: "", level4: "" },
     });
     setSections(updatedSections);
+    setCanSave(true);
+    console.log("CAN_SAVE", true);
     setSectionName("");
-  }
+  };
 
-  function saveButtonClicked() {
+  const saveButtonClicked = () => {
+    console.log("SaveButtonClicked");
     const itemId = commentService.save(id, { description, sections });
     if (isCreateMode) {
       window.location.href = `#/comments/${itemId}/edit`;
+    } else {
+      setCanSave(false);
+      console.log("CAN_SAVE", false);
     }
-  }
+  };
 
   return (
     <div>
@@ -76,7 +113,7 @@ const UpsertComments = () => {
           <label>Description</label>
           <input
             placeholder="ex: Term 3 Math Comments"
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => onDescriptionChanged(e.target.value)}
             value={description}
           ></input>
         </div>
@@ -116,7 +153,9 @@ const UpsertComments = () => {
           </div>
         </div>
       </div>
-      <button onClick={saveButtonClicked}>Save</button>
+      <button disabled={!canSave} onClick={saveButtonClicked}>
+        Save
+      </button>
     </div>
   );
 };
