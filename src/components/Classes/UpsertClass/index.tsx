@@ -41,10 +41,9 @@ const UpsertClass = () => {
 
       <div className="form">
         <div className="form-row">
-          <label>Class Name</label>
           <input
             name="className"
-            placeholder="ex: Grade 7 - 22/23"
+            placeholder="Description (e.g. Grade 7 - 22/23)"
             onChange={(e) => {
               setDescription(e.target.value);
               setCanSave(true);
@@ -57,14 +56,14 @@ const UpsertClass = () => {
           <label>
             Students{" "}
             <span className="hint">
-              One row per student. (First, Last, Subject Pronoun, Object
+              One row per student. (First, Last, Subjective Pronoun, Projective
               Pronoun, Possessive Pronoun)
             </span>
           </label>
           <textarea
             name="students"
             rows={15}
-            placeholder="ex: Jane, Smith, She, Her, Hers"
+            placeholder="e.g. Jane, Smith, She, Her, Hers"
             onChange={(e) => {
               setStudents(e.target.value);
               setCanSave(true);

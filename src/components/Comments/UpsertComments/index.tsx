@@ -89,9 +89,8 @@ const UpsertComments = () => {
 
       <div className="form">
         <div className="form-row">
-          <label>Description</label>
           <input
-            placeholder="ex: Term 3 Math Comments"
+            placeholder="Description (e.g. Term 3 Math Comments)"
             onChange={(e) => onDescriptionChanged(e.target.value)}
             value={description}
           ></input>
