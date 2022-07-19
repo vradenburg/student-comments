@@ -60,14 +60,14 @@ const UpsertComments = () => {
   function saveButtonClicked() {
     const itemId = commentService.save(id, { description, sections });
     if (isCreateMode) {
-      window.location.href = `/#/comments/${itemId}/edit`;
+      window.location.href = `#/comments/${itemId}/edit`;
     }
   }
 
   return (
     <div>
       <h2>
-        <a href="/#/comments">Comments</a> \{" "}
+        <a href="#/comments">Comments</a> \{" "}
         {isCreateMode ? "Add New" : "Update"} Comments
       </h2>
 

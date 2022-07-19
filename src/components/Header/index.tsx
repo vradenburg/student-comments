@@ -11,21 +11,21 @@ function Header({ title }: IProps) {
   return (
     <header>
       <h1>
-        <img src="/logo.png" height={22} alt={title} />
-        <a href="/">{title}</a>
+        <img src="logo.png" height={22} alt={title} />
+        <a href="#/">{title}</a>
       </h1>
       <nav>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="#/">Home</a>
           </li>
           <li>|</li>
           <li>
-            <a href="/#/classes">My Classes</a>
+            <a href="#/classes">My Classes</a>
           </li>
           <li>|</li>
           <li>
-            <a href="/#/comments">Comment Rubricks</a>
+            <a href="#/comments">Comment Rubricks</a>
           </li>
         </ul>
       </nav>

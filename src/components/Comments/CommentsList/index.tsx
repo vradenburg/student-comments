@@ -25,7 +25,7 @@ const CommentsList = () => {
       <div className="list">
         {classes.map((cls) => (
           <div key={idx++} className="item">
-            <a href={`/#/comment/${cls.id}/edit`}>{cls.description}</a>
+            <a href={`#/comment/${cls.id}/edit`}>{cls.description}</a>
             <button onClick={() => deleteClassById(cls.id)}>
               <MdDeleteForever />
             </button>

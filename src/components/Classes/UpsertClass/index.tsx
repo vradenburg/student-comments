@@ -23,14 +23,14 @@ const UpsertClass = () => {
   function saveButtonClicked() {
     const classId = classService.save(id, { description, students });
     if (isCreateMode) {
-      window.location.href = `/#/class/${classId}/edit`;
+      window.location.href = `#/class/${classId}/edit`;
     }
   }
 
   return (
     <div>
       <h2>
-        <a href="/#/classes">Classes</a> \ {isCreateMode ? "Add New" : "Update"}{" "}
+        <a href="#/classes">Classes</a> \ {isCreateMode ? "Add New" : "Update"}{" "}
         Class
       </h2>
 
