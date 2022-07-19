@@ -26,11 +26,7 @@ const UpsertComments = () => {
       if (result) {
         setDescription(result.description);
         setSections(result.sections);
-
-        return function cleanup() {
-          setCanSave(false);
-          console.log("CAN_SAVE", false);
-        };
+        setCanSave(false);
       }
     }
   }, [id, isCreateMode, isInitialized]);
@@ -38,28 +34,22 @@ const UpsertComments = () => {
   const onDescriptionChanged = (description: string) => {
     setDescription(description);
     setCanSave(true);
-    console.log("CAN_SAVE", true);
   };
 
   const onSectionChanged = (index: number, section: ISection) => {
-    console.log("OnSectionChanged");
     const updatedSections = Array.from(sections);
     updatedSections[index] = section;
     setSections(updatedSections);
     setCanSave(true);
-    console.log("CAN_SAVE", true);
   };
   const onSectionDeleted = (index: number) => {
-    console.log("OnSectionDelete");
     const updatedSections = Array.from(sections);
     updatedSections.splice(index, 1);
     setSections(updatedSections);
     setCanSave(true);
-    console.log("CAN_SAVE", true);
   };
 
   const onSectionMoved = (index: number, isDown: boolean) => {
-    console.log("OnSectionMoved");
     let newIndex = isDown ? index + 1 : index - 1;
     if (newIndex < 0) newIndex = 0;
     const updatedSections = Array.from(sections);
@@ -68,11 +58,9 @@ const UpsertComments = () => {
     updatedSections.splice(newIndex, 0, item);
     setSections(updatedSections);
     setCanSave(true);
-    console.log("CAN_SAVE", true);
   };
 
   const addSection = () => {
-    console.log("AddSection");
     const updatedSections = Array.from(sections);
     updatedSections.push({
       name: sectionName,
@@ -80,18 +68,15 @@ const UpsertComments = () => {
     });
     setSections(updatedSections);
     setCanSave(true);
-    console.log("CAN_SAVE", true);
     setSectionName("");
   };
 
   const saveButtonClicked = () => {
-    console.log("SaveButtonClicked");
     const itemId = commentService.save(id, { description, sections });
     if (isCreateMode) {
       window.location.href = `#/comments/${itemId}/edit`;
     } else {
       setCanSave(false);
-      console.log("CAN_SAVE", false);
     }
   };
 
