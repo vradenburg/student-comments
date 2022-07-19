@@ -34,7 +34,7 @@ export class BaseService<TData extends IDescription> {
   };
 
   public save = (id: number | undefined, data: TData) => {
-    if (!id) {
+    if (id === undefined) {
       id = this.nextId();
     }
     this.state.data[id] = data;
