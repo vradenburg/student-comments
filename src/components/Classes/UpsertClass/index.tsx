@@ -12,10 +12,6 @@ const UpsertClass = () => {
   const [canSave, setCanSave] = useState(false);
 
   useEffect(() => {
-    setCanSave(true);
-  }, [description, students]);
-
-  useEffect(() => {
     if (!isCreateMode) {
       const result = classService.getById(id);
       if (result) {
@@ -49,7 +45,10 @@ const UpsertClass = () => {
           <input
             name="className"
             placeholder="ex: Grade 7 - 22/23"
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {
+              setDescription(e.target.value);
+              setCanSave(true);
+            }}
             value={description}
           ></input>
         </div>
@@ -66,7 +65,10 @@ const UpsertClass = () => {
             name="students"
             rows={15}
             placeholder="ex: Jane, Smith, She, Her, Hers"
-            onChange={(e) => setStudents(e.target.value)}
+            onChange={(e) => {
+              setStudents(e.target.value);
+              setCanSave(true);
+            }}
             value={students}
           ></textarea>
         </div>

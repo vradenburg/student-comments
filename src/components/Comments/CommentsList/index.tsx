@@ -32,7 +32,13 @@ const CommentsList = () => {
           </div>
         ))}
       </div>
-      <a href={`#/comment/add`}>Add Comment</a>
+      <button
+        onClick={() => {
+          window.location.href = `#/comment/add`;
+        }}
+      >
+        Add Comments
+      </button>
     </div>
   );
 };

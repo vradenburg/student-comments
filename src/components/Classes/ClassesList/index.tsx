@@ -32,7 +32,13 @@ const ClassesList = () => {
           </div>
         ))}
       </div>
-      <a href={`#/class/add`}>Add Class</a>
+      <button
+        onClick={() => {
+          window.location.href = `#/class/add`;
+        }}
+      >
+        Add Class
+      </button>
     </div>
   );
 };
