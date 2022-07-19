@@ -5,7 +5,6 @@ import commentService from "../../../services/CommentService";
 import { ISection } from "../../../services/CommentService/interfaces";
 import Section from "./Section";
 import { MdOutlineAdd } from "react-icons/md";
-import { cleanup } from "@testing-library/react";
 
 const UpsertComments = () => {
   const { id: idString } = useParams();
@@ -18,11 +17,6 @@ const UpsertComments = () => {
   const [sectionName, setSectionName] = useState("");
   const [isInitialized, setIsInitialized] = useState(false);
   const [canSave, setCanSave] = useState(false);
-
-  // useEffect(() => {
-  //   setCanSave(true);
-  // console.log("CAN_SAVE", true);
-  // }, [description, sections]);
 
   useEffect(() => {
     if (!isCreateMode && !isInitialized) {

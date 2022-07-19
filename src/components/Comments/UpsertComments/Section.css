@@ -15,7 +15,12 @@
 
 .section .actions button {
   background: transparent;
-  border: none;
+  border: solid thin transparent;
   font-size: xx-large;
-  padding: 0;
+  padding: 5px;
+  display: flex;
+}
+
+.section .actions button:hover {
+  border: solid thin #7f7f7f;
 }
