@@ -1,0 +1,12 @@
+.comment-selector {
+  margin-bottom: 30px;
+}
+.download-link {
+  font-size: larger;
+  border: solid thin #7f7f7f;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: buttonface;
+  text-decoration: none;
+  color: #3f3f3f;
+}

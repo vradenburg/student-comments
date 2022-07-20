@@ -1,3 +1,4 @@
+import "./index.css";
 import { useEffect, useState } from "react";
 import classService from "../../services/ClassService";
 import commentService from "../../services/CommentService";
@@ -98,7 +99,7 @@ const Home = () => {
 
         <StudentsList students={students} onLevelChanged={onLevelChanged} />
 
-        <div>
+        <div className="comment-selector">
           <select
             onChange={(e) => {
               setSelectedCommentId(parseInt(e.target.value));
@@ -116,13 +117,14 @@ const Home = () => {
           </select>
         </div>
         <CSVLink
+          className="download-link"
           hidden={mergeData.length === 0}
           data={mergeData}
           asyncOnClick={true}
           filename="results.csv"
           target="_blank"
         >
-          Generate Comments
+          Download Comments
         </CSVLink>
       </div>
     </div>
