@@ -27,6 +27,10 @@ function Header({ title }: IProps) {
           <li>
             <a href="#/comments">My Comments</a>
           </li>
+          <li>|</li>
+          <li>
+            <a href="#/settings">Settings</a>
+          </li>
         </ul>
       </nav>
     </header>

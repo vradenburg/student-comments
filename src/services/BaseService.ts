@@ -1,14 +1,14 @@
-interface IDescription {
+export interface IDescription {
   description: string;
 }
-interface IState<TData extends IDescription> {
+export interface IState<TData extends IDescription> {
   nextId: number;
   data: Record<number, TData>;
 }
 
 export class BaseService<TData extends IDescription> {
-  storageKey: string;
-  state: IState<TData>;
+  protected storageKey: string;
+  protected state: IState<TData>;
 
   constructor(storageKey: string, defaultState: IState<TData>) {
     this.storageKey = storageKey;
@@ -26,6 +26,15 @@ export class BaseService<TData extends IDescription> {
     this.saveState();
     return id;
   };
+
+  public getState() {
+    return this.state;
+  }
+
+  public setState(state: IState<TData>) {
+    this.state = state;
+    this.saveState();
+  }
 
   public getList = () => {
     return Object.entries(this.state.data).map(([key, value]) => {
