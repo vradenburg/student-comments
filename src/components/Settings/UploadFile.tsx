@@ -1,14 +1,15 @@
+import "./UploadFile.css";
 import React, { useState } from "react";
 import { BaseService, IDescription, IState } from "../../services/BaseService";
 import { v4 } from "uuid";
 
 interface IProps<TData extends IDescription> {
-  title: string;
+  text: string;
   service: BaseService<TData>;
 }
 
 export function UploadFile<TData extends IDescription>({
-  title,
+  text,
   service,
 }: IProps<TData>) {
   const [state, setState] = useState<IState<TData>>();
@@ -40,7 +41,7 @@ export function UploadFile<TData extends IDescription>({
   };
 
   return (
-    <div>
+    <div className="upload-file">
       <input
         type="file"
         key={fileInputKey}
@@ -48,12 +49,9 @@ export function UploadFile<TData extends IDescription>({
         id="file"
         name="file"
       />
-      <input
-        disabled={!state}
-        type="button"
-        onClick={onSaveButtonClicked}
-        value={title}
-      ></input>
+      <button type="button" disabled={!state} onClick={onSaveButtonClicked}>
+        {text}
+      </button>
     </div>
   );
 }
