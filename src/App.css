@@ -58,6 +58,10 @@ button {
   font-size: larger;
 }
 
+button:disabled {
+  border-color: rgba(16, 16, 16, 0.3);
+}
+
 .list {
   font-size: x-large;
   width: stretch;
