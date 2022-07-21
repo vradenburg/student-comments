@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
 import ReactGA from "react-ga4";
+import * as serviceWorker from "./serviceWorker";
 
 // Multiple products (previously known as trackers)
 ReactGA.initialize([
@@ -28,3 +29,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+serviceWorker.register();
