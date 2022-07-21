@@ -2,6 +2,10 @@
   "short_name": "Student Comments",
   "name": "Student Comments",
   "icons": [{
+    "src": "favicon.ico",
+    "type": "image/ico",
+    "sizes": "48x48"
+  }, {
     "src": "logo.png",
     "type": "image/png",
     "sizes": "860x893"

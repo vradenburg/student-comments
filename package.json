@@ -58,6 +58,7 @@
     "os": false
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "workbox-cli": "^6.5.3"
   }
 }

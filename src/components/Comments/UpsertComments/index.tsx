@@ -74,7 +74,7 @@ const UpsertComments = () => {
   const saveButtonClicked = () => {
     const itemId = commentService.save(id, { description, sections });
     if (isCreateMode) {
-      window.location.href = `#/comments/${itemId}/edit`;
+      window.location.href = `#/comment/${itemId}/edit`;
     } else {
       setCanSave(false);
     }
