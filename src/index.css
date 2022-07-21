@@ -16,6 +16,12 @@ input {
   color: #3f3f3f;
 }
 
+button:disabled,
+select:disabled,
+input:disabled {
+  color: rgba(16, 16, 16, 0.3);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
