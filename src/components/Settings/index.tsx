@@ -1,6 +1,6 @@
 import "./index.css";
 import classService from "../../services/ClassService";
-import commentService from "../../services/CommentService";
+import subjectService from "../../services/SubjectService";
 import DownloadButton from "./DownloadButton";
 import { UploadFile } from "./UploadFile";
 
@@ -23,7 +23,7 @@ const Settings = () => {
           ></DownloadButton>
           <DownloadButton
             text="Download My Comments"
-            data={commentService.getState()}
+            data={subjectService.getState()}
             fileName="comments.json"
             fileType="text/json"
           ></DownloadButton>
@@ -39,7 +39,7 @@ const Settings = () => {
         <h4>My Classes</h4>
         <UploadFile text="Upload" service={classService}></UploadFile>
         <h4>My Comments</h4>
-        <UploadFile text="Upload" service={commentService}></UploadFile>
+        <UploadFile text="Upload" service={subjectService}></UploadFile>
       </div>
     </div>
   );

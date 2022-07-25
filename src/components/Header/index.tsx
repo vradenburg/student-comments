@@ -25,7 +25,7 @@ function Header({ title }: IProps) {
           </li>
           <li>|</li>
           <li>
-            <a href="#/comments">My Comments</a>
+            <a href="#/subjects">My Subjects</a>
           </li>
           <li>|</li>
           <li>

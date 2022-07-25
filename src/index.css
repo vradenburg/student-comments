@@ -16,10 +16,38 @@ input {
   color: #3f3f3f;
 }
 
+button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: solid thin #7f7f7f;
+  margin: 10px 20px 10px 0;
+  font-size: larger;
+}
+
+button.hover {
+  background-color: transparent;
+  border: solid thin transparent;
+}
+
+button.primary {
+  background-color: #01ba9e;
+  color: #fff;
+}
+
+button.delete {
+  color: #bc0101;
+}
+
+button.delete:hover {
+  border-color: #7f7f7f;
+}
+
 button:disabled,
 select:disabled,
 input:disabled {
+  border-color: rgba(16, 16, 16, 0.3);
   color: rgba(16, 16, 16, 0.3);
+  background-color: initial;
 }
 
 code {
@@ -46,6 +74,13 @@ h4 {
   font-weight: 400;
   /* font-size: larger; */
   color: #017a68;
+}
+
+h4.large {
+  font-size: x-large;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 a {

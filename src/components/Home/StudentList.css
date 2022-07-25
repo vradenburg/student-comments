@@ -18,6 +18,7 @@
 
 .header .level-title {
   flex: 0;
+  white-space: nowrap;
 }
 
 .student {
@@ -42,7 +43,7 @@ span.pronouns {
 
 .student input {
   flex: 0;
-  padding: 2px;
-  width: 50px;
-  text-align: end;
+  width: 100px;
+  text-align: center;
+  margin-left: 10px;
 }

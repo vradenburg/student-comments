@@ -49,7 +49,12 @@ export function UploadFile<TData extends IDescription>({
         id="file"
         name="file"
       />
-      <button type="button" disabled={!state} onClick={onSaveButtonClicked}>
+      <button
+        className="primary"
+        type="button"
+        disabled={!state}
+        onClick={onSaveButtonClicked}
+      >
         {text}
       </button>
     </div>

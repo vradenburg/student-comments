@@ -1,5 +1,5 @@
 import "./Section.css";
-import { ISection } from "../../../services/CommentService/interfaces";
+import { ISection } from "../../../services/SubjectService/interfaces";
 import {
   MdDeleteForever,
   MdKeyboardArrowUp,
@@ -86,7 +86,7 @@ const Section = ({
         }
       ></textarea>
       <div className="actions">
-        <button onClick={() => onSectionDeleted(index)}>
+        <button className="delete" onClick={() => onSectionDeleted(index)}>
           <MdDeleteForever />
         </button>
         <button

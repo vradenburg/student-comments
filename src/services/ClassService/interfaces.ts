@@ -9,5 +9,5 @@ export interface IStudent {
   subj_pn: string;
   proj_pn: string;
   poss_pn: string;
-  level: number;
+  levels: Record<number, Record<string, number>>;
 }

@@ -1,12 +1,12 @@
 import "./index.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import commentService from "../../../services/CommentService";
-import { ISection } from "../../../services/CommentService/interfaces";
+import subjectService from "../../../services/SubjectService";
+import { ISection } from "../../../services/SubjectService/interfaces";
 import Section from "./Section";
 import { MdOutlineAdd } from "react-icons/md";
 
-const UpsertComments = () => {
+const UpsertSubjects = () => {
   const { id: idString } = useParams();
   const isCreateMode = !idString;
 
@@ -22,7 +22,7 @@ const UpsertComments = () => {
     if (!isCreateMode && !isInitialized) {
       console.log("Initialize");
       setIsInitialized(true);
-      const result = commentService.getById(id);
+      const result = subjectService.getById(id);
       if (result) {
         setDescription(result.description);
         setSections(result.sections);
@@ -72,9 +72,9 @@ const UpsertComments = () => {
   };
 
   const saveButtonClicked = () => {
-    const itemId = commentService.save(id, { description, sections });
+    const itemId = subjectService.save(id, { description, sections });
     if (isCreateMode) {
-      window.location.href = `#/comment/${itemId}/edit`;
+      window.location.href = `#/subject/${itemId}/edit`;
     } else {
       setCanSave(false);
     }
@@ -83,8 +83,8 @@ const UpsertComments = () => {
   return (
     <div>
       <h2>
-        <a href="#/comments">Comments</a> \{" "}
-        {isCreateMode ? "Add New" : "Update"} Comments
+        <a href="#/subjects">Subjects</a> \{" "}
+        {isCreateMode ? "Add New" : "Update"} Subject
       </h2>
 
       <div className="form">
@@ -121,20 +121,24 @@ const UpsertComments = () => {
           ))}
           <div className="add-section-form">
             <input
-              placeholder="New Section Name"
+              placeholder="Section"
               onChange={(e) => setSectionName(e.target.value)}
               value={sectionName}
             ></input>
-            <button onClick={addSection}>
-              <MdOutlineAdd />
+            <button className="primary" onClick={addSection}>
+              Add
             </button>
           </div>
         </div>
       </div>
-      <button disabled={!canSave} onClick={saveButtonClicked}>
+      <button
+        className="primary"
+        disabled={!canSave}
+        onClick={saveButtonClicked}
+      >
         Save
       </button>
     </div>
   );
 };
-export default UpsertComments;
+export default UpsertSubjects;

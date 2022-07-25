@@ -1,12 +1,36 @@
 .comment-selector {
   margin-bottom: 30px;
 }
+
+.download {
+  display: flex;
+  margin-top: 10px;
+}
+
 .download-link {
   font-size: larger;
   border: solid thin #7f7f7f;
   border-radius: 5px;
-  padding: 5px 10px;
-  background-color: buttonface;
+  padding: 10px 40px;
   text-decoration: none;
-  color: #3f3f3f;
+  background-color: #01ba9e;
+  color: #fff;
+}
+
+.download-link a {
+  vertical-align: middle;
+}
+
+.delete-subject {
+  border-color: transparent;
+  background-color: transparent;
+  font-size: x-large;
+  margin-left: 10px;
+}
+
+.add-subject {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  background-color: #01ba9e;
+  color: #fff;
 }

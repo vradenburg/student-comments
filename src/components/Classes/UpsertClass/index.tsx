@@ -72,7 +72,11 @@ const UpsertClass = () => {
           ></textarea>
         </div>
       </div>
-      <button disabled={!canSave} onClick={saveButtonClicked}>
+      <button
+        className="primary"
+        disabled={!canSave}
+        onClick={saveButtonClicked}
+      >
         Save
       </button>
     </div>

@@ -37,6 +37,7 @@ function DownloadButton({ text, data, fileName, fileType }: IProps) {
 
   return (
     <button
+      className="primary"
       type="button"
       onClick={(e) => exportToJson(e, data, fileName, fileType)}
     >

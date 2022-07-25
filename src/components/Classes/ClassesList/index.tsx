@@ -26,18 +26,19 @@ const ClassesList = () => {
         {classes.map((cls) => (
           <div key={idx++} className="item">
             <a href={`#/class/${cls.id}/edit`}>{cls.description}</a>
-            <button onClick={() => deleteClassById(cls.id)}>
+            <button className="delete" onClick={() => deleteClassById(cls.id)}>
               <MdDeleteForever />
             </button>
           </div>
         ))}
       </div>
       <button
+        className="primary"
         onClick={() => {
           window.location.href = `#/class/add`;
         }}
       >
-        Add Class
+        Add
       </button>
     </div>
   );
