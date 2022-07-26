@@ -3,11 +3,31 @@ import classService from "../../services/ClassService";
 import subjectService from "../../services/SubjectService";
 import DownloadButton from "./DownloadButton";
 import { UploadFile } from "./UploadFile";
+import settingsService from "../../services/SettingsService";
+import { useState } from "react";
 
 const Settings = () => {
+  const [levels, setLevels] = useState(settingsService.getLevels());
+
+  const onLevelsChanged = (levels: number) => {
+    settingsService.setLevels(levels);
+    setLevels(levels);
+  };
+
   return (
     <div>
       <h2>Settings</h2>
+      <div className="default-settings">
+        <h3>Default Settings</h3>
+        <div>
+          <input
+            value={levels}
+            onChange={(e) => onLevelsChanged(parseInt(e.target.value))}
+          ></input>
+          Number of comment levels.
+        </div>
+      </div>
+
       <div className="export-data">
         <h3>Export</h3>
         <p>

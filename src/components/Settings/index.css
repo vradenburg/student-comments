@@ -1,3 +1,4 @@
+.default-settings,
 .import-data,
 .export-data {
   display: flex;
@@ -6,4 +7,9 @@
   border-radius: 5px;
   background-color: #f7f7f7;
   padding: 10px;
+}
+
+.default-settings input {
+  width: 100px;
+  margin-right: 20px;
 }

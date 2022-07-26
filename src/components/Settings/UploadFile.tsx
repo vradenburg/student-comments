@@ -1,11 +1,15 @@
 import "./UploadFile.css";
 import React, { useState } from "react";
-import { BaseService, IDescription, IState } from "../../services/BaseService";
+import {
+  BaseDataService,
+  IDescription,
+  IState,
+} from "../../services/BaseDataService";
 import { v4 } from "uuid";
 
 interface IProps<TData extends IDescription> {
   text: string;
-  service: BaseService<TData>;
+  service: BaseDataService<TData>;
 }
 
 export function UploadFile<TData extends IDescription>({

@@ -1,9 +1,9 @@
-import { BaseService } from "../BaseService";
+import { BaseDataService } from "../BaseDataService";
 import { IClass } from "./interfaces";
 
 const defaultState = { nextId: 0, data: {} };
 
-class ClassService extends BaseService<IClass> {
+class ClassService extends BaseDataService<IClass> {
   constructor() {
     super("classes", defaultState);
   }

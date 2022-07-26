@@ -64,7 +64,7 @@ const UpsertSubjects = () => {
     const updatedSections = Array.from(sections);
     updatedSections.push({
       name: sectionName,
-      comments: { level1: "", level2: "", level3: "", level4: "" },
+      comments: [],
     });
     setSections(updatedSections);
     setCanSave(true);

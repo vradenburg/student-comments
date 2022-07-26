@@ -6,7 +6,7 @@ export interface IState<TData extends IDescription> {
   data: Record<number, TData>;
 }
 
-export class BaseService<TData extends IDescription> {
+export class BaseDataService<TData extends IDescription> {
   protected storageKey: string;
   protected state: IState<TData>;
 

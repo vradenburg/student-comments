@@ -1,5 +1,6 @@
 import "./StudentList.css";
 import { IStudent } from "../../services/ClassService/interfaces";
+import settingsService from "../../services/SettingsService";
 
 interface IProps {
   subjectId: number;
@@ -19,11 +20,13 @@ const StudentsList = ({
   students,
   onLevelChanged,
 }: IProps) => {
+  const levels = settingsService.getLevels();
+
   return students.length > 0 ? (
     <div className="students">
       <div className="header">
         <div className="student-title">Student</div>
-        <div className="level-title">Levels (1-4)</div>
+        <div className="level-title">Levels (1-{levels})</div>
       </div>
       {students.map((student, index) => (
         <Student

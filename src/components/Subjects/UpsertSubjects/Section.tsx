@@ -5,6 +5,8 @@ import {
   MdKeyboardArrowUp,
   MdKeyboardArrowDown,
 } from "react-icons/md";
+import { useEffect } from "react";
+import settingsService from "../../../services/SettingsService";
 
 interface IProps {
   index: number;
@@ -25,9 +27,22 @@ const Section = ({
   onSectionDeleted,
   onSectionMoved,
 }: IProps) => {
+  const levels = settingsService.getLevels();
+
   const onChange = (partial: any) => {
+    console.log(partial);
     onSectionChanged(index, Object.assign({}, section, partial));
   };
+
+  useEffect(() => {
+    if (section.comments.length < levels) {
+      console.log("Array not big enough");
+      section.comments.push(
+        ...Array(levels - section.comments.length).fill("")
+      );
+      onSectionChanged(index, section);
+    }
+  });
 
   return (
     <div id={`section-${index}`} className="section">
@@ -37,54 +52,21 @@ const Section = ({
           onChange={(e) => onChange({ name: e.target.value })}
         ></input>
       </div>
-      <textarea
-        rows={5}
-        value={section.comments.level1}
-        placeholder="Level 1"
-        onChange={(e) =>
-          onChange({
-            comments: Object.assign({}, section.comments, {
-              level1: e.target.value,
-            }),
-          })
-        }
-      ></textarea>
-      <textarea
-        rows={5}
-        value={section.comments.level2}
-        placeholder="Level 2"
-        onChange={(e) =>
-          onChange({
-            comments: Object.assign({}, section.comments, {
-              level2: e.target.value,
-            }),
-          })
-        }
-      ></textarea>
-      <textarea
-        rows={5}
-        value={section.comments.level3}
-        placeholder="Level 3"
-        onChange={(e) =>
-          onChange({
-            comments: Object.assign({}, section.comments, {
-              level3: e.target.value,
-            }),
-          })
-        }
-      ></textarea>
-      <textarea
-        rows={5}
-        value={section.comments.level4}
-        placeholder="Level 4"
-        onChange={(e) =>
-          onChange({
-            comments: Object.assign({}, section.comments, {
-              level4: e.target.value,
-            }),
-          })
-        }
-      ></textarea>
+      {section.comments.map((comment, level) => (
+        <textarea
+          key={`level${level}`}
+          rows={5}
+          value={comment}
+          placeholder={`Level ${level + 1}`}
+          onChange={(e) => {
+            section.comments[level] = e.target.value;
+            console.log("COMMENTS", section.comments);
+            onChange({
+              comments: section.comments,
+            });
+          }}
+        ></textarea>
+      ))}
       <div className="actions">
         <button className="delete" onClick={() => onSectionDeleted(index)}>
           <MdDeleteForever />
