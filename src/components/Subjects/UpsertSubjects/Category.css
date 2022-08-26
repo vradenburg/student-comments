@@ -1,19 +1,19 @@
-.section {
+.category {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
 }
 
-.section textarea {
+.category textarea {
   font-size: medium;
   margin-left: 5px;
 }
 
-.section .actions {
+.category .actions {
   padding-left: 20px;
 }
 
-.section .actions button {
+.category .actions button {
   background: transparent;
   border: solid thin transparent;
   font-size: xx-large;
@@ -21,6 +21,6 @@
   display: flex;
 }
 
-.section .actions button:hover {
+.category .actions button:hover {
   border: solid thin #7f7f7f;
 }

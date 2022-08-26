@@ -2,8 +2,8 @@ import "./index.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import subjectService from "../../../services/SubjectService";
-import { ISection } from "../../../services/SubjectService/interfaces";
-import Section from "./Section";
+import { ICategory } from "../../../services/SubjectService/interfaces";
+import Category from "./Category";
 import { MdOutlineAdd } from "react-icons/md";
 
 const UpsertSubjects = () => {
@@ -13,7 +13,7 @@ const UpsertSubjects = () => {
   const id: number | undefined = isCreateMode ? undefined : parseInt(idString);
 
   const [description, setDescription] = useState("");
-  const [sections, setSections] = useState<ISection[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
   const [sectionName, setSectionName] = useState("");
   const [isInitialized, setIsInitialized] = useState(false);
   const [canSave, setCanSave] = useState(false);
@@ -25,7 +25,7 @@ const UpsertSubjects = () => {
       const result = subjectService.getById(id);
       if (result) {
         setDescription(result.description);
-        setSections(result.sections);
+        setCategories(result.categories);
         setCanSave(false);
       }
     }
@@ -36,43 +36,47 @@ const UpsertSubjects = () => {
     setCanSave(true);
   };
 
-  const onSectionChanged = (index: number, section: ISection) => {
-    const updatedSections = Array.from(sections);
-    updatedSections[index] = section;
-    setSections(updatedSections);
+  const onCategoryChanged = (index: number, section: ICategory) => {
+    const updatedCategories = Array.from(categories);
+    updatedCategories[index] = section;
+    setCategories(updatedCategories);
     setCanSave(true);
   };
-  const onSectionDeleted = (index: number) => {
-    const updatedSections = Array.from(sections);
-    updatedSections.splice(index, 1);
-    setSections(updatedSections);
+  const onCategoryDeleted = (index: number) => {
+    const updatedCategories = Array.from(categories);
+    updatedCategories.splice(index, 1);
+    setCategories(updatedCategories);
     setCanSave(true);
   };
 
-  const onSectionMoved = (index: number, isDown: boolean) => {
+  const onCategoryMoved = (index: number, isDown: boolean) => {
     let newIndex = isDown ? index + 1 : index - 1;
     if (newIndex < 0) newIndex = 0;
-    const updatedSections = Array.from(sections);
-    if (newIndex > updatedSections.length) newIndex = updatedSections.length;
-    const [item] = updatedSections.splice(index, 1);
-    updatedSections.splice(newIndex, 0, item);
-    setSections(updatedSections);
+    const updatedCategories = Array.from(categories);
+    if (newIndex > updatedCategories.length)
+      newIndex = updatedCategories.length;
+    const [item] = updatedCategories.splice(index, 1);
+    updatedCategories.splice(newIndex, 0, item);
+    setCategories(updatedCategories);
     setCanSave(true);
   };
 
   const addSection = () => {
-    const updatedSections = Array.from(sections);
-    updatedSections.push({
+    const updatedCategories = Array.from(categories);
+    updatedCategories.push({
       name: sectionName,
       comments: [],
     });
-    setSections(updatedSections);
+    setCategories(updatedCategories);
     setCanSave(true);
     setSectionName("");
   };
 
   const saveButtonClicked = () => {
-    const itemId = subjectService.save(id, { description, sections });
+    const itemId = subjectService.save(id, {
+      description,
+      categories,
+    });
     if (isCreateMode) {
       window.location.href = `#/subject/${itemId}/edit`;
     } else {
@@ -98,7 +102,7 @@ const UpsertSubjects = () => {
 
         <div className="form-row">
           <label>
-            Sections{" "}
+            Rubrik Categories{" "}
             <span className="hint">
               Merge Tokens: first, last, subj_pn, proj_pn, poss_pn
             </span>
@@ -107,21 +111,21 @@ const UpsertSubjects = () => {
               bad. &#123;&#123;subj_pn&#125;&#125; can do better.
             </span>
           </label>
-          {sections.map((section, index) => (
-            <Section
+          {categories?.map((section, index) => (
+            <Category
               key={`section${index}`}
               index={index}
-              section={section}
+              category={section}
               canMoveUp={index > 0}
-              canMoveDown={index < sections.length - 1}
-              onSectionChanged={onSectionChanged}
-              onSectionDeleted={onSectionDeleted}
-              onSectionMoved={onSectionMoved}
+              canMoveDown={index < categories.length - 1}
+              onCategoryChanged={onCategoryChanged}
+              onCategoryDeleted={onCategoryDeleted}
+              onCategoryMoved={onCategoryMoved}
             />
           ))}
           <div className="add-section-form">
             <input
-              placeholder="Section"
+              placeholder="Category"
               onChange={(e) => setSectionName(e.target.value)}
               value={sectionName}
             ></input>

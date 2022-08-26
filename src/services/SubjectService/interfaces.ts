@@ -5,12 +5,12 @@
 //   level4: string;
 // }
 
-export interface ISection {
+export interface ICategory {
   name: string;
   comments: string[];
 }
 
 export interface IComments {
   description: string;
-  sections: ISection[];
+  categories: ICategory[];
 }

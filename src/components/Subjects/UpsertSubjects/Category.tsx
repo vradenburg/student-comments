@@ -1,5 +1,5 @@
-import "./Section.css";
-import { ISection } from "../../../services/SubjectService/interfaces";
+import "./Category.css";
+import { ICategory } from "../../../services/SubjectService/interfaces";
 import {
   MdDeleteForever,
   MdKeyboardArrowUp,
@@ -10,75 +10,74 @@ import settingsService from "../../../services/SettingsService";
 
 interface IProps {
   index: number;
-  section: ISection;
+  category: ICategory;
   canMoveUp: boolean;
   canMoveDown: boolean;
-  onSectionChanged: (index: number, section: ISection) => void;
-  onSectionDeleted: (index: number) => void;
-  onSectionMoved: (index: number, isDown: boolean) => void;
+  onCategoryChanged: (index: number, category: ICategory) => void;
+  onCategoryDeleted: (index: number) => void;
+  onCategoryMoved: (index: number, isDown: boolean) => void;
 }
 
-const Section = ({
+const Category = ({
   index,
-  section,
+  category,
   canMoveUp,
   canMoveDown,
-  onSectionChanged,
-  onSectionDeleted,
-  onSectionMoved,
+  onCategoryChanged,
+  onCategoryDeleted,
+  onCategoryMoved,
 }: IProps) => {
   const levels = settingsService.getLevels();
 
   const onChange = (partial: any) => {
     console.log(partial);
-    onSectionChanged(index, Object.assign({}, section, partial));
+    onCategoryChanged(index, Object.assign({}, category, partial));
   };
 
   useEffect(() => {
-    if (section.comments.length < levels) {
+    if (category.comments.length < levels) {
       console.log("Array not big enough");
-      section.comments.push(
-        ...Array(levels - section.comments.length).fill("")
+      category.comments.push(
+        ...Array(levels - category.comments.length).fill("")
       );
-      onSectionChanged(index, section);
+      onCategoryChanged(index, category);
     }
   });
 
   return (
-    <div id={`section-${index}`} className="section">
+    <div id={`category-${index}`} className="category">
       <div>
         <input
-          value={section.name}
+          value={category.name}
           onChange={(e) => onChange({ name: e.target.value })}
         ></input>
       </div>
-      {section.comments.map((comment, level) => (
+      {category.comments.map((comment, level) => (
         <textarea
           key={`level${level}`}
           rows={5}
           value={comment}
           placeholder={`Level ${level + 1}`}
           onChange={(e) => {
-            section.comments[level] = e.target.value;
-            console.log("COMMENTS", section.comments);
+            category.comments[level] = e.target.value;
             onChange({
-              comments: section.comments,
+              comments: category.comments,
             });
           }}
         ></textarea>
       ))}
       <div className="actions">
-        <button className="delete" onClick={() => onSectionDeleted(index)}>
+        <button className="delete" onClick={() => onCategoryDeleted(index)}>
           <MdDeleteForever />
         </button>
         <button
-          onClick={() => onSectionMoved(index, false)}
+          onClick={() => onCategoryMoved(index, false)}
           disabled={!canMoveUp}
         >
           <MdKeyboardArrowUp />
         </button>
         <button
-          onClick={() => onSectionMoved(index, true)}
+          onClick={() => onCategoryMoved(index, true)}
           disabled={!canMoveDown}
         >
           <MdKeyboardArrowDown />
@@ -87,4 +86,4 @@ const Section = ({
     </div>
   );
 };
-export default Section;
+export default Category;

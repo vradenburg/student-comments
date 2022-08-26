@@ -4,7 +4,7 @@ import classService from "../../services/ClassService";
 import subjectService from "../../services/SubjectService";
 import { CSVLink } from "react-csv";
 import { IStudent } from "../../services/ClassService/interfaces";
-import { IComments, ISection } from "../../services/SubjectService/interfaces";
+import { IComments, ICategory } from "../../services/SubjectService/interfaces";
 import ClassSelect from "../Classes/ClassSelect";
 import SubjectList from "./SubjectList";
 import AddSubject from "./AddSubject";
@@ -25,11 +25,11 @@ const Home = () => {
 
   const mergeComment = (
     subjectId: number,
-    section: ISection,
+    category: ICategory,
     student: IStudent
   ) => {
-    const level = student.levels[subjectId]?.[section.name] - 1;
-    let comment = section.comments[level] || "";
+    const level = student.levels[subjectId]?.[category.name] - 1;
+    let comment = category.comments[level] || "";
     for (const key of Object.keys(student)) {
       comment = comment.replace(
         new RegExp(`{{${key}}}`, "gi"),
@@ -57,8 +57,8 @@ const Home = () => {
       for (const item of subjects) {
         const subject = subjectService.getById(item.subjectId);
         const mergedComments =
-          subject?.sections.map((section) => {
-            return mergeComment(item.subjectId, section, student);
+          subject?.categories?.map((category) => {
+            return mergeComment(item.subjectId, category, student);
           }) || [];
 
         result[`${subject?.description || "undefined"} Comments`] =
@@ -79,11 +79,11 @@ const Home = () => {
       cls?.students.split("\n").map((item) => {
         const [first, last, subj_pn, proj_pn, poss_pn] = item.split(",");
         return {
-          first: first.trim(),
-          last: last.trim(),
-          subj_pn: subj_pn.trim(),
-          proj_pn: proj_pn.trim(),
-          poss_pn: poss_pn.trim(),
+          first: first?.trim(),
+          last: last?.trim(),
+          subj_pn: subj_pn?.trim(),
+          proj_pn: proj_pn?.trim(),
+          poss_pn: poss_pn?.trim(),
           levels: {},
         };
       }) || [];
@@ -97,7 +97,7 @@ const Home = () => {
     if (subject) {
       updatedSubjects.push({
         subjectId: subjectId,
-        sectionNames: subject?.sections.map((s) => s.name) || [],
+        sectionNames: subject?.categories?.map((s) => s.name) || [],
         subject,
       });
       setSubjects(updatedSubjects);
@@ -114,15 +114,15 @@ const Home = () => {
   const onLevelChanged = (
     subjectId: number,
     studentIndex: number,
-    section: string,
+    category: string,
     level: number
   ) => {
     console.log("SELECTED_CLASS", selectedClass);
     const updatedClass = Object.assign({}, selectedClass);
     const { levels } = updatedClass.students[studentIndex];
-    const subjectSection = levels[subjectId] || {};
-    subjectSection[section] = level;
-    updatedClass.students[studentIndex].levels[subjectId] = subjectSection;
+    const subjectCategory = levels[subjectId] || {};
+    subjectCategory[category] = level;
+    updatedClass.students[studentIndex].levels[subjectId] = subjectCategory;
     setSelectedClass(updatedClass);
   };
 
@@ -142,7 +142,7 @@ const Home = () => {
           onLevelChanged={onLevelChanged}
         />
         <AddSubject
-          subjectIds={subjects.map((s) => s.subjectId)}
+          subjectIds={subjects?.map((s) => s.subjectId)}
           onAddSubject={onAddSubject}
         />
       </div>
