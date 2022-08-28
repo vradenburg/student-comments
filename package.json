@@ -41,8 +41,8 @@
     "workbox-streams": "^6.5.3"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "npm version patch -m'version bump' && gh-pages -d build",
+    "predeploy": "npm version patch -m'version bump' && npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
