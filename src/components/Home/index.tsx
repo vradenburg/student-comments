@@ -46,7 +46,7 @@ const Home = () => {
           }) || [];
 
         result[`${subject?.description || "undefined"} Comments`] =
-          mergedComments.filter((f) => f).join("\n\n");
+          mergedComments.filter((f) => f).join(" ");
       }
 
       return result;

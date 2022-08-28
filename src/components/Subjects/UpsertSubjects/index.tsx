@@ -87,8 +87,8 @@ const UpsertSubjects = () => {
   return (
     <div>
       <h2>
-        <a href="#/subjects">Subjects</a> \{" "}
-        {isCreateMode ? "Add New" : "Update"} Subject
+        <a href="#/subjects">Subjects</a> \ {isCreateMode ? "Add" : "Update"}{" "}
+        Subject
       </h2>
 
       <div className="form">

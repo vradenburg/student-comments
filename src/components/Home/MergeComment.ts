@@ -44,12 +44,5 @@ export const mergeComment = (
     }
   }
 
-  // for (const key of ) {
-  //   comment = comment.replace(
-  //     new RegExp(`{{${key}}}`, "gi"),
-  //     (student as any)[key]
-  //   );
-  // }
-
   return comment;
 };
