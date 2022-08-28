@@ -1,6 +1,6 @@
 {
   "name": "student-comments",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "homepage": "https://student-comments.davidnlaura.com",
   "private": true,
   "dependencies": {
@@ -41,7 +41,7 @@
     "workbox-streams": "^6.5.3"
   },
   "scripts": {
-    "predeploy": "npm version patch -m'version bump' && npm run build",
+    "predeploy": "standard-version && npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -72,6 +72,7 @@
     "os": false
   },
   "devDependencies": {
+    "standard-version": "^9.5.0",
     "gh-pages": "^4.0.0"
   }
 }
