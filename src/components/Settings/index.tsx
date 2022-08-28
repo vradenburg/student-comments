@@ -4,10 +4,22 @@ import subjectService from "../../services/SubjectService";
 import DownloadButton from "./DownloadButton";
 import { UploadFile } from "./UploadFile";
 import settingsService from "../../services/SettingsService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Settings = () => {
   const [levels, setLevels] = useState(settingsService.getLevels());
+  const [version, setVersion] = useState("");
+
+  useEffect(() => {
+    const loadVersion = async () => {
+      const res = await fetch("/manifest.json");
+      const data: { version: string } | undefined = await res.json();
+      // .then(res =>
+      setVersion(data?.version || "");
+    };
+
+    loadVersion();
+  }, [version]);
 
   const onLevelsChanged = (levels: number) => {
     settingsService.setLevels(levels);
@@ -16,7 +28,7 @@ const Settings = () => {
 
   return (
     <div>
-      <h2>Settings</h2>
+      <h2>Settings (v{version})</h2>
       <div className="default-settings">
         <h3>Default Settings</h3>
         <div>
