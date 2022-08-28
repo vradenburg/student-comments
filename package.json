@@ -1,6 +1,6 @@
 {
   "name": "student-comments",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "homepage": "https://student-comments.davidnlaura.com",
   "private": true,
   "dependencies": {
