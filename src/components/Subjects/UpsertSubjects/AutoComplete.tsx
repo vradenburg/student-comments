@@ -53,27 +53,27 @@ const AutoCompleteTextArea = ({
             { name: "First", char: "{{First}}" },
             { name: "Last", char: "{{Last}}" },
             {
-              name: "Subjective Pronoun - Uppercase",
+              name: "Subjective (He|She|They)",
               char: "{{Subj_pn}}",
             },
             {
-              name: "Subjective Pronoun - Lowercase",
+              name: "Subjective (he|she|they)",
               char: "{{subj_pn}}",
             },
             {
-              name: "Projective Pronoun - Uppercase",
+              name: "Projective (Him|Her|Them)",
               char: "{{Proj_pn}}",
             },
             {
-              name: "Projective Pronoun - Lowercase",
+              name: "Projective (him|her|them)",
               char: "{{proj_pn}}",
             },
             {
-              name: "Posessive Pronoun - Uppercase",
+              name: "Posessive (His|Hers|Their)",
               char: "{{Poss_pn}}",
             },
             {
-              name: "Posessive Pronoun - Lowercase",
+              name: "Posessive (his|hers|Their)",
               char: "{{poss_pn}}",
             },
           ],

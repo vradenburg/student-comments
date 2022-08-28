@@ -54,18 +54,6 @@ const Category = ({
         ></input>
       </div>
       {category.comments.map((comment, level) => (
-        // <textarea
-        //   key={`level${level}`}
-        //   rows={5}
-        //   value={comment}
-        //   placeholder={`Level ${level + 1}`}
-        //   onChange={(e) => {
-        //     category.comments[level] = e.target.value;
-        //     onChange({
-        //       comments: category.comments,
-        //     });
-        //   }}
-        // ></textarea>
         <AutoCompleteTextArea
           category={category}
           comment={comment}

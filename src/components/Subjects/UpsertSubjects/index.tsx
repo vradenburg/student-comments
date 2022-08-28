@@ -107,6 +107,7 @@ const UpsertSubjects = () => {
               Merge Tokens: first, last, subj_pn, proj_pn, poss_pn
             </span>
             <span className="example">
+              Type &#123;&#123; to trigger the autocomplete menu. <br />
               e.g. During the term, &#123;&#123;first&#125;&#125; was really
               bad. &#123;&#123;subj_pn&#125;&#125; can do better.
             </span>
