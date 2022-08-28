@@ -1,6 +1,6 @@
 {
   "name": "student-comments",
-  "version": "0.1.1",
+  "version": "1.0.15",
   "homepage": "https://student-comments.davidnlaura.com",
   "private": true,
   "dependencies": {
@@ -42,7 +42,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm version patch -m'version bump' && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
