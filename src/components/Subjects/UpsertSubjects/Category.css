@@ -9,6 +9,11 @@
   margin-left: 5px;
 }
 
+.category .rta__autocomplete {
+  width: 450px;
+  z-index: 1;
+}
+
 .category .actions {
   padding-left: 20px;
 }

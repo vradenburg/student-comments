@@ -61,8 +61,8 @@ const UpsertSubjects = () => {
     setCanSave(true);
   };
 
-  const addSection = () => {
-    const updatedCategories = Array.from(categories);
+  const addCategory = () => {
+    const updatedCategories = Array.from(categories || []);
     updatedCategories.push({
       name: sectionName,
       comments: [],
@@ -129,7 +129,7 @@ const UpsertSubjects = () => {
               onChange={(e) => setSectionName(e.target.value)}
               value={sectionName}
             ></input>
-            <button className="primary" onClick={addSection}>
+            <button className="primary" onClick={addCategory}>
               Add
             </button>
           </div>

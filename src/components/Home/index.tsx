@@ -4,10 +4,11 @@ import classService from "../../services/ClassService";
 import subjectService from "../../services/SubjectService";
 import { CSVLink } from "react-csv";
 import { IStudent } from "../../services/ClassService/interfaces";
-import { IComments, ICategory } from "../../services/SubjectService/interfaces";
+import { IComments } from "../../services/SubjectService/interfaces";
 import ClassSelect from "../Classes/ClassSelect";
 import SubjectList from "./SubjectList";
 import AddSubject from "./AddSubject";
+import { mergeComment } from "./MergeComment";
 
 const Home = () => {
   const [selectedClass, setSelectedClass] = useState<{
@@ -22,23 +23,6 @@ const Home = () => {
     }[]
   >([]);
   const [mergeData, setMergeData] = useState<Record<string, string>[]>([]);
-
-  const mergeComment = (
-    subjectId: number,
-    category: ICategory,
-    student: IStudent
-  ) => {
-    const level = student.levels[subjectId]?.[category.name] - 1;
-    let comment = category.comments[level] || "";
-    for (const key of Object.keys(student)) {
-      comment = comment.replace(
-        new RegExp(`{{${key}}}`, "gi"),
-        (student as any)[key]
-      );
-    }
-
-    return comment;
-  };
 
   useEffect(() => {
     if (

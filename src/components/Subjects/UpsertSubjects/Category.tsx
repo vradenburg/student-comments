@@ -7,6 +7,7 @@ import {
 } from "react-icons/md";
 import { useEffect } from "react";
 import settingsService from "../../../services/SettingsService";
+import AutoCompleteTextArea from "./AutoComplete";
 
 interface IProps {
   index: number;
@@ -53,18 +54,24 @@ const Category = ({
         ></input>
       </div>
       {category.comments.map((comment, level) => (
-        <textarea
-          key={`level${level}`}
-          rows={5}
-          value={comment}
-          placeholder={`Level ${level + 1}`}
-          onChange={(e) => {
-            category.comments[level] = e.target.value;
-            onChange({
-              comments: category.comments,
-            });
-          }}
-        ></textarea>
+        // <textarea
+        //   key={`level${level}`}
+        //   rows={5}
+        //   value={comment}
+        //   placeholder={`Level ${level + 1}`}
+        //   onChange={(e) => {
+        //     category.comments[level] = e.target.value;
+        //     onChange({
+        //       comments: category.comments,
+        //     });
+        //   }}
+        // ></textarea>
+        <AutoCompleteTextArea
+          category={category}
+          comment={comment}
+          level={level}
+          onChange={onChange}
+        ></AutoCompleteTextArea>
       ))}
       <div className="actions">
         <button className="delete" onClick={() => onCategoryDeleted(index)}>
