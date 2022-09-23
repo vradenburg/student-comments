@@ -1,11 +1,10 @@
 {
   "name": "student-comments",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "homepage": "https://student-comments.davidnlaura.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/handlebars": "^4.1.0",
     "@types/jest": "^27.5.2",
@@ -72,7 +71,8 @@
     "os": false
   },
   "devDependencies": {
-    "standard-version": "^9.5.0",
-    "gh-pages": "^4.0.0"
+    "@testing-library/react": "^13.3.0",
+    "gh-pages": "^4.0.0",
+    "standard-version": "^9.5.0"
   }
 }
