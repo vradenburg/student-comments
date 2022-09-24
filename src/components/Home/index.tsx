@@ -9,6 +9,7 @@ import ClassSelect from "../Classes/ClassSelect";
 import SubjectList from "./SubjectList";
 import AddSubject from "./AddSubject";
 import { mergeComment } from "./MergeComment";
+import GetStarted from "./GetStarted";
 
 const Home = () => {
   const [selectedClass, setSelectedClass] = useState<{
@@ -113,6 +114,8 @@ const Home = () => {
   return (
     <div>
       <h2>Home</h2>
+      {(classService.getList().length === 0 ||
+        subjectService.getList().length === 0) && <GetStarted></GetStarted>}
       <div className="form">
         <h3>Generate Class Comments</h3>
         <ClassSelect
